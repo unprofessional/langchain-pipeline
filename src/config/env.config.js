@@ -7,6 +7,6 @@ dotenv.config({ path: envFilePath });
 export default {
   NODE_ENV: process.env.NODE_ENV || 'development',
   PORT: process.env.PORT || 3030,
-  JWT_SECRET: process.env.JWT_SECRET || 'changeMeWithEnvValue',
+  JWT_SECRET: process.env.JWT_SECRET || 'changemeinprod',
   JWT_EXPIRY: process.env.JWT_EXPIRY || '30d',
 };

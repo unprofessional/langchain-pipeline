@@ -1,4 +1,4 @@
-import initLogger from './utils/winston-logger.js'; // Use the correct logger instance
+import initLogger from './utils/winston-logger.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
@@ -24,6 +24,7 @@ const swaggerDocument = YAML.parse(file);
 export default async () => {  
   server.use(cookieParser());
   server.use(express.json());
+  // TODO: Consider if we need this for now since we do not have a frontend yet
   server.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
@@ -39,7 +40,7 @@ export default async () => {
       logger.http(`>>> Body: ${JSON.stringify(req.body)}`);
     }
 
-    next(); // Ensure request continues
+    next();
   });
 
   // Health Check route

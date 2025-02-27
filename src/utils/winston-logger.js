@@ -9,9 +9,9 @@ if (!fs.existsSync(logDir)) {
 }
 
 export default function initLogger() {
-  // Prevent re-initialization of the logger
+  // Prevent re-initialization of the logger (singleton)
   if (winston.loggers.has('default-logger')) {
-    return winston.loggers.get('default-logger'); // Ensure we always return the logger
+    return winston.loggers.get('default-logger');
   }
 
   const fileFormat = winston.format.combine(
@@ -50,7 +50,7 @@ export default function initLogger() {
   const logger = winston.loggers.add('default-logger', {
     level: process.env.LOG_LEVEL || 'info',
     defaultMeta: { service: process.env.LOG_SERVICE_NAME || 'default-service' },
-    transports, // Ensure transports are added immediately
+    transports,
   });
 
   // Ensure exceptions & rejections are handled
@@ -72,5 +72,5 @@ export default function initLogger() {
     }));
   }
 
-  return logger; // Ensure a logger is always returned
+  return logger;
 }

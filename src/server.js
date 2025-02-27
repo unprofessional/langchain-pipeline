@@ -1,7 +1,7 @@
 import initLogger from './utils/winston-logger.js';
 
 // Get logger instance from initLogger()
-const logger = initLogger(); // Ensures logger is returned correctly
+const logger = initLogger();
 
 import openApiExpressServer from './app.js';
 import env from './config/env.config.js';
