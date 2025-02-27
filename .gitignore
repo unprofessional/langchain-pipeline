@@ -1,0 +1,19 @@
+## Node ##
+build/
+build_test/
+node_modules/
+.package-lock.json
+coverage/
+
+## Env ##
+.env
+.env.development
+.env.test
+.env.production
+compose*.env
+
+## MacOS ##
+**/.DS_Store
+
+## Logs ##
+logs/
