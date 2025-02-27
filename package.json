@@ -2,6 +2,10 @@
   "name": "langchain-pipeline",
   "version": "1.0.0",
   "description": "A general pipeline for GenAI, intended as a modular boilerplate for various runners/APIs/models/etc",
+  "engines": {
+    "node": ">=20.11.1",
+    "npm": ">=9.5.0"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
