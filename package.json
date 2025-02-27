@@ -1,0 +1,19 @@
+{
+  "name": "langchain-pipeline",
+  "version": "1.0.0",
+  "description": "A general pipeline for GenAI, intended as a modular boilerplate for various runners/APIs/models/etc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unprofessional/langchain-pipeline.git"
+  },
+  "author": "unprofessional",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unprofessional/langchain-pipeline/issues"
+  },
+  "homepage": "https://github.com/unprofessional/langchain-pipeline#readme"
+}
