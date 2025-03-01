@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "checkJs": true,
+    "checkJs": false,   // Keep this off to avoid TypeScript-style checks
     "noImplicitAny": false,
     "strict": false
-  }
+  },
+  "include": ["src/**/*"]
 }
