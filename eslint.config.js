@@ -1,25 +1,34 @@
+// @ts-ignore
+import importPlugin from "eslint-plugin-import";
+import nPlugin from "eslint-plugin-n";
+import promisePlugin from "eslint-plugin-promise";
+import standard from "eslint-config-standard";
+
 export default [
   {
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
+      globals: {
+        console: "readonly",
+        process: "readonly",
+        __dirname: "readonly",
+        __filename: "readonly",
+      },
     },
-    env: {
-      browser: true,
-      es2021: true,
+    plugins: {
+      import: importPlugin,
+      n: nPlugin,
+      promise: promisePlugin,
     },
-    extends: [
-      "airbnb-base",
-      "airbnb-typescript/base"
-    ],
+    settings: standard.settings ?? {}, // Ensure StandardJS settings are included (if any)
     rules: {
+      ...standard.rules, // Apply StandardJS rules
       "padded-blocks": "off",
       "no-trailing-spaces": "off",
       "arrow-body-style": "off",
-      "@typescript-eslint/no-unused-vars": "warn",
       "import/no-extraneous-dependencies": "off",
       "import/prefer-default-export": "warn",
-      "@typescript-eslint/naming-convention": "warn",
       "no-underscore-dangle": "warn",
       "max-len": [
         "warn",
