@@ -10,6 +10,6 @@ A general pipeline for GenAI, intended as a modular boilerplate for various runn
 - Jest
 
 ## TODO:
-- Troubleshoot ESLint
+- Add husky pre-commit hook
 - Set up basic jest test
 - Add base case for LangChain Pipeline
