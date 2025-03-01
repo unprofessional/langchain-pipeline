@@ -1,2 +1,2 @@
 // Basic Pipeline Endpoints
-export * from './pipeline/pipeline.controller.js'
+export * from './pipeline/pipeline.controller.js';

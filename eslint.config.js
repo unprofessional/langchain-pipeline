@@ -30,6 +30,9 @@ export default [
       "import/no-extraneous-dependencies": "off",
       "import/prefer-default-export": "warn",
       "no-underscore-dangle": "warn",
+      "comma-dangle": ["error", "always-multiline"],
+      "semi": ["error", "always"],
+      "space-before-function-paren": ["error", "never"],
       "max-len": [
         "warn",
         {

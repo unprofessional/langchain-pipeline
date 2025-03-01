@@ -2,4 +2,4 @@
  * MAIUN PIPELING LOGIC GOES HERE!!!
  */
 
-console.log('hello world')
+console.log('hello world');
