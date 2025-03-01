@@ -1,8 +1,8 @@
 // @ts-ignore
+import standard from 'eslint-config-standard';
 import importPlugin from 'eslint-plugin-import';
 import nPlugin from 'eslint-plugin-n';
 import promisePlugin from 'eslint-plugin-promise';
-import standard from 'eslint-config-standard';
 
 export default [
   {
@@ -31,6 +31,7 @@ export default [
       'import/prefer-default-export': 'off',
       'no-underscore-dangle': 'warn',
       'comma-dangle': ['error', 'always-multiline'],
+      'no-unused-vars': 'warn',
       semi: ['error', 'always'],
       'space-before-function-paren': ['error', 'never'],
       'max-len': [

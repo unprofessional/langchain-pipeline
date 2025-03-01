@@ -1,14 +1,14 @@
-import initLogger from './utils/winston-logger.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
 import { initialize } from 'express-openapi';
 import fs from 'node:fs';
 import path, { dirname } from 'node:path';
-import swaggerUi from 'swagger-ui-express';
 import { fileURLToPath } from 'node:url';
+import swaggerUi from 'swagger-ui-express';
 import YAML from 'yaml';
 import * as operations from './openapi/operations/index.js';
+import initLogger from './utils/winston-logger.js';
 
 // Get the logger from initLogger()
 const logger = initLogger();
