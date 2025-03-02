@@ -4,7 +4,7 @@ import importPlugin from 'eslint-plugin-import';
 import jestPlugin from 'eslint-plugin-jest';
 import nPlugin from 'eslint-plugin-n';
 import promisePlugin from 'eslint-plugin-promise';
-// import jestRecommended from 'eslint-plugin-jest/configs/recommended';
+// import jestRecommended from 'eslint-plugin-jest/configs/recommended'; // FIXME: not found?
 
 export default [
   {

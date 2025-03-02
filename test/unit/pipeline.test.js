@@ -7,6 +7,7 @@ describe('Pipeline Unit tests', () => {
   let response;
 
   beforeAll(async () => {
+    // FIXME: Mock object response and test schema contract instead
     response = await runPipelineWithMemory(prompt);
   });
 
