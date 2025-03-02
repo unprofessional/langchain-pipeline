@@ -4,6 +4,7 @@ import importPlugin from 'eslint-plugin-import';
 import jestPlugin from 'eslint-plugin-jest';
 import nPlugin from 'eslint-plugin-n';
 import promisePlugin from 'eslint-plugin-promise';
+// import jestRecommended from 'eslint-plugin-jest/configs/recommended';
 
 export default [
   {
@@ -26,6 +27,7 @@ export default [
     settings: standard.settings ?? {}, // Ensure StandardJS settings are included (if any)
     rules: {
       ...standard.rules, // Apply StandardJS rules
+      // ...jestRecommended.rules, // Merge Jest recommended rules
       'padded-blocks': 'off',
       'no-trailing-spaces': 'off',
       'arrow-body-style': 'off',
@@ -47,6 +49,5 @@ export default [
         },
       ],
     },
-    extends: ['plugin:jest/recommended'],
   },
 ];
