@@ -1,4 +1,4 @@
-import { runPipeline, runPipelineWithMemory } from '../../../pipeline/pipeline.js';
+import { runPipelineWithMemory } from '../../../pipeline/pipeline.js';
 import initLogger from '../../../utils/winston-logger.js';
 
 const logger = initLogger();
