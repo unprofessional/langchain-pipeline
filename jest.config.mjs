@@ -1,18 +1,10 @@
 /** @type {import('jest').Config} */
 const config = {
-  preset: 'jest',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.js$': [
-      'babel-jest',
-      {
-        configFile: './babel.config.json',
-      },
-    ],
+    '^.+\\.js$': 'babel-jest',
   },
-  moduleNameMapper: {
-    '^(\\.{1,2}/.*)\\.js$': '$1',
-  },
+  testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
   coverageThreshold: {
     global: {
       branches: 52,
@@ -21,14 +13,8 @@ const config = {
       statements: 52,
     },
   },
-  coverageReporters: [
-    'text',
-    'cobertura',
-    'html',
-  ],
-  collectCoverageFrom: [
-    'src/**',
-  ],
+  coverageReporters: ['text', 'cobertura', 'html'],
+  collectCoverageFrom: ['src/**'],
   coveragePathIgnorePatterns: ['/node_modules/'],
 };
 

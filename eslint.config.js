@@ -1,6 +1,7 @@
 // @ts-ignore
 import standard from 'eslint-config-standard';
 import importPlugin from 'eslint-plugin-import';
+import jestPlugin from 'eslint-plugin-jest';
 import nPlugin from 'eslint-plugin-n';
 import promisePlugin from 'eslint-plugin-promise';
 
@@ -20,6 +21,7 @@ export default [
       import: importPlugin,
       n: nPlugin,
       promise: promisePlugin,
+      jest: jestPlugin,
     },
     settings: standard.settings ?? {}, // Ensure StandardJS settings are included (if any)
     rules: {
@@ -45,5 +47,6 @@ export default [
         },
       ],
     },
+    extends: ['plugin:jest/recommended'],
   },
 ];

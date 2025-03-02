@@ -1,8 +1,16 @@
 {
   "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowSyntheticDefaultImports": true,
     "checkJs": false,   // Keep this off to avoid TypeScript-style checks
     "noImplicitAny": false,
-    "strict": false
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@langchain/core/*": ["node_modules/@langchain/core/*"],
+      "@langchain/community/*": ["node_modules/@langchain/community/*"]
+    }
   },
   "include": ["src/**/*"]
 }
