@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { runPipelineWithMemory } from '../../src/pipeline/pipeline.js';
 
 // Mock the module
