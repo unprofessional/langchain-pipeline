@@ -15,9 +15,10 @@ export default {
   OLLAMA_BASE_URL: process.env.OLLAMA_BASE_URL || 'http://localhost:11434',
   OPENAI_API_KEY: process.env.OPENAI_API_KEY || '',
   // Postgres
-  PG_HOST: process.env.PG_HOST,
-  PG_PORT: process.env.PG_PORT,
-  PG_USER: process.env.PG_USER,
-  PG_PASS: process.env.PG_PASS,
-  PG_DB: process.env.PG_DB,
+  PG_HOST: process.env.PG_HOST || 'localhost',
+  PG_PORT: process.env.PG_PORT || '5432',
+  PG_USER: process.env.PG_USER || 'postgres',
+  PG_PASS: process.env.PG_PASS || 'changeme',
+  PG_DB: process.env.PG_DB || 'kokoro_pipeline',
+  PG_CONNECTION_STR: `postgresql://${process.env.PG_USER}:${process.env.PG_PASS}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DB}`,
 };
