@@ -9,9 +9,9 @@ describe('Pipeline Unit tests', () => {
   const prompt = 'Test';
   let response;
 
-  beforeAll(async () => {
+  beforeAll(async() => {
     // Define a mock response
-    const mockResponse = { response: "Mocked AI response text" };
+    const mockResponse = { response: 'Mocked AI response text' };
     runPipelineWithMemory.mockResolvedValue(mockResponse); // Mock function behavior
 
     response = await runPipelineWithMemory(prompt);
