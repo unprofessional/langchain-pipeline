@@ -1,5 +1,5 @@
 import { ConversationChain } from 'langchain/chains';
-// import { BufferMemory } from 'langchain/memory';
+import { BufferMemory } from 'langchain/memory';
 import env from '../config/env.config.js';
 import { getOllamaLLM } from './providers/ollama.js';
 import { getOpenAILLM } from './providers/openai.js';
@@ -7,7 +7,7 @@ import { getOpenAILLM } from './providers/openai.js';
 // import { PostgresChatMessageHistory } from '@langchain/community/stores/message/postgres';
 
 // NOTE: This is strictly in-memory and memories/convos do not survive app restarts!
-// const memory = new BufferMemory();
+const memory = new BufferMemory();
 
 // export const createPersistentMemory = async(sessionId) => {
 //   const messageHistory = new PostgresChatMessageHistory({
@@ -35,7 +35,7 @@ export const runPipeline = async(input) => {
   return response;
 };
 
-export const runPipelineWithMemory = async(input, memory, sessionId) => {
+export const runPipelineWithMemory = async(input, sessionId) => {
   const llm = getLLMInstance();
 
   // const memory = await createPersistentMemory(sessionId);
