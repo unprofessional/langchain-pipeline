@@ -28,6 +28,7 @@ export default [
     rules: {
       ...standard.rules, // Apply StandardJS rules
       // ...jestRecommended.rules, // Merge Jest recommended rules
+      quotes: ['error', 'single', { avoidEscape: true }],
       'padded-blocks': 'off',
       'no-trailing-spaces': 'off',
       'arrow-body-style': 'off',

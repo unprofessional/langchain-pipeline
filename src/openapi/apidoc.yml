@@ -41,6 +41,17 @@ components:
         - 'message'
       additionalProperties: false
 
+    Prompt:
+      type: 'object'
+      properties:
+        prompt:
+          type: 'string'
+          description: 'User prompt for the model'
+          example: 'This is a test.'
+      required:
+        - 'prompt'
+      additionalProperties: false
+
   securitySchemes:
     basicAuth:
       type: http
@@ -56,18 +67,26 @@ components:
 
 servers:
   - url: 'http://localhost:3030'
-    description: 'Make OpenAPI Docs aware of the hosted location'
+    description: 'for localhost development'
 
 paths:
   ## Pipeline ##
   /pipeline:
-    get:
-      summary: 'FIXME: Hello world for now'
+    post:
+      summary: 'Send a user prompt to the model'
       tags:
         - 'Pipeline'
       operationId: 'pipelineControllerFn'
       security:
         - basicAuth: []
+      requestBody:
+        description: 'A JSON object containing the prompt property'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Prompt'
+
       responses:
         200:
           description: 'FIXME: Hello world!'
