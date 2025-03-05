@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: 'LangChain Pipeline Boilerplate'
+  version: '1.0.0'
+components:
+  schemas:
+
+    SuccessId:
+      type: 'object'
+      properties:
+        id:
+          type: 'number'
+          description: 'Success ID'
+      required:
+        - 'id'
+      additionalProperties: false
+
+    SuccessIds:
+      type: 'object'
+      properties:
+        successIds:
+          type: 'array'
+          description: 'An array of SuccessId objects'
+          items:
+            $ref: '#/components/schemas/SuccessId'
+      required:
+        - 'successIds'
+      additionalProperties: false
+
+    Error:
+      type: 'object'
+      properties:
+        code:
+          type: 'number'
+          description: 'Error status code'
+        message:
+          type: 'string'
+          description: 'Error message detail'
+      required:
+        - 'code'
+        - 'message'
+      additionalProperties: false
+
+    Prompt:
+      type: 'object'
+      properties:
+        prompt:
+          type: 'string'
+          description: 'User prompt for the model'
+          example: 'This is a test.'
+      required:
+        - 'prompt'
+      additionalProperties: false
+
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: langchain-pipeline-app
+
+servers:
+  - url: 'http://localhost:3030'
+    description: 'for localhost development'
+
+paths:
+  ## Pipeline ##
+  /pipeline:
+    post:
+      summary: 'Send a user prompt to the model'
+      tags:
+        - 'Pipeline'
+      operationId: 'pipelineControllerFn'
+      security:
+        - basicAuth: []
+      requestBody:
+        description: 'A JSON object containing the prompt property'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Prompt'
+
+      responses:
+        200:
+          description: 'FIXME: Hello world!'
+        default:
+          description: 'An error occurred'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        
+tags:
+  - name: 'Pipeline'
+    description: 'These endpoints deal with main pipeline'

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kokoro-http-service
+spec:
+  selector:
+    app: kokoro
+  ports:
+    - protocol: TCP
+      port: 8081        # Internal cluster port
+      targetPort: 8081  # Container's listening port
+      nodePort: 32081   # External port on Minikube
+  type: NodePort        # Expose Kokoro externally
