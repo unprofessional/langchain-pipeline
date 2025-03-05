@@ -1,8 +1,8 @@
-import { runPipelineWithMemory } from '../../../pipeline/pipeline.js';
+import { runPipelineWithBufferMemory, runPipelineWithPersistence } from '../../../pipeline/pipeline.js';
 import initLogger from '../../../utils/winston-logger.js';
 
 const logger = initLogger();
-const sessionId = '0987654321';
+const sessionId = '0987654321'; // TODO: Get from requestBody
 
 export async function pipelineControllerFn(req, res) {
   logger.info('Pipeline Controller reached');
@@ -13,7 +13,8 @@ export async function pipelineControllerFn(req, res) {
   
   try {
     // response = await runPipeline(userInput);
-    response = await runPipelineWithMemory(userInput, sessionId);
+    // response = await runPipelineWithBufferMemory(userInput);
+    response = await runPipelineWithPersistence(userInput, sessionId);
     console.log('LLM Response[1]:', response);
   } catch (error) {
     console.error('Error in LLM pipeline:', error);

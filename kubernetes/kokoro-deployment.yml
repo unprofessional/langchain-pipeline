@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kokoro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kokoro
+  template:
+    metadata:
+      labels:
+        app: kokoro
+    spec:
+      containers:
+      - name: kokoro
+        image: unprofessional/kokoro:rc-0.0.1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80  # HTTP
+        # - containerPort: 443 # HTTPS
+        # only uncomment above if using kokoro-ingress.yaml service as a
+        # Kubernetes ingress controller
+        # Postgres
+        - name: PG_HOST
+          valueFrom:
+            secretKeyRef:
+              name: pg-host
+              key: PG_HOST
+        - name: PG_PORT
+          valueFrom:
+            secretKeyRef:
+              name: pg-port
+              key: PG_PORT
+        - name: PG_USER
+          valueFrom:
+            secretKeyRef:
+              name: pg-user
+              key: PG_USER
+        - name: PG_PASS_KOKORO
+          valueFrom:
+            secretKeyRef:
+              name: pg-pass-kokoro
+              key: PG_PASS_KOKORO
+        - name: PG_DB_KOKORO
+          valueFrom:
+            secretKeyRef:
+              name: pg-db-kokoro
+              key: PG_DB_KOKORO
+        # i.e. `ollama` or `openai`
+        - name: MODEL_PROVIDER
+          valueFrom:
+            secretKeyRef:
+              name: model-provider
+              key: MODEL_PROVIDER
+        - name: OLLAMA_URL
+          valueFrom:
+            secretKeyRef:
+              name: ollama-url
+              key: OLLAMA_URL
+        # TODO: OPENAI_URL (if needed)
+        # TODO: OPENAI_API_KEY (if needed)
