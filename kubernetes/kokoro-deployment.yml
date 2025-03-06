@@ -34,11 +34,11 @@ spec:
             secretKeyRef:
               name: pg-user
               key: PG_USER
-        - name: PG_PASS_KOKORO
+        - name: PG_PASS
           valueFrom:
             secretKeyRef:
-              name: pg-pass-kokoro
-              key: PG_PASS_KOKORO
+              name: pg-pass
+              key: PG_PASS
         - name: PG_DB_KOKORO
           valueFrom:
             secretKeyRef:
