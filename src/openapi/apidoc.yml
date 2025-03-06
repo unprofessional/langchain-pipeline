@@ -41,16 +41,26 @@ components:
         - 'message'
       additionalProperties: false
 
-    Prompt:
+    PipelineRequest:
       type: 'object'
       properties:
         prompt:
           type: 'string'
           description: 'User prompt for the model'
           example: 'This is a test.'
+        sessionId:
+          type: 'string'
+          description: 'Session ID for conversation memory'
+          example: '0987654321'
       required:
         - 'prompt'
+        - 'sessionId'
       additionalProperties: false
+
+    Prompt:
+      type: 'string'
+      description: 'User prompt for the model'
+      example: 'This is a test.'
 
   securitySchemes:
     basicAuth:
@@ -85,7 +95,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Prompt'
+              $ref: '#/components/schemas/PipelineRequest'
 
       responses:
         200:
