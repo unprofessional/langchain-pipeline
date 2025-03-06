@@ -10,6 +10,12 @@ const { Pool } = pkg;
 // NOTE: This is strictly in-memory and memories/convos do not survive app restarts!
 const memory = new BufferMemory();
 
+console.log('>>> env.PG_USER: ', env.PG_USER);
+console.log('>>> env.PG_PASS: ', env.PG_PASS);
+console.log('>>> env.PG_HOST: ', env.PG_HOST);
+console.log('>>> env.PG_PORT: ', env.PG_PORT);
+console.log('>>> env.PG_DB: ', env.PG_DB);
+
 // Initialize PostgreSQL Connection Pool
 const pool = new Pool({
   user: env.PG_USER,
