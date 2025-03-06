@@ -9,5 +9,5 @@ spec:
     - protocol: TCP
       port: 8081        # Internal cluster port
       targetPort: 3030  # Container's listening port
-      nodePort: 32081   # External port on Minikube
-  type: NodePort        # Expose Kokoro externally
+      # nodePort: 32081   # External port on Minikube
+  type: LoadBalancer        # Expose Kokoro externally
