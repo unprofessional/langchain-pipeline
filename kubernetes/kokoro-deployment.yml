@@ -17,11 +17,8 @@ spec:
         image: unprofessional/kokoro:rc-0.0.1
         imagePullPolicy: Never
         ports:
-        - containerPort: 80  # HTTP
-        # - containerPort: 443 # HTTPS
-        # only uncomment above if using kokoro-ingress.yaml service as a
-        # Kubernetes ingress controller
-        # Postgres
+        - containerPort: 8081  # Use the correct port here (matching service)
+        env:  # Environment variables go here (not under ports)
         - name: PG_HOST
           valueFrom:
             secretKeyRef:
@@ -47,7 +44,6 @@ spec:
             secretKeyRef:
               name: pg-db-kokoro
               key: PG_DB_KOKORO
-        # i.e. `ollama` or `openai`
         - name: MODEL_PROVIDER
           valueFrom:
             secretKeyRef:
