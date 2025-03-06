@@ -18,7 +18,7 @@ export default {
   PG_HOST: process.env.PG_HOST || 'localhost',
   PG_PORT: process.env.PG_PORT || '5432',
   PG_USER: process.env.PG_USER || 'postgres',
-  PG_PASS: process.env.PG_PASS || 'changeme',
-  PG_DB: process.env.PG_DB || 'kokoro_pipeline',
+  PG_PASS: process.env.PG_PASS_KOKORO || 'changeme',
+  PG_DB: process.env.PG_DB_KOKORO || 'kokoro_pipeline',
   PG_CONNECTION_STR: `postgresql://${process.env.PG_USER}:${process.env.PG_PASS}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DB}`,
 };
