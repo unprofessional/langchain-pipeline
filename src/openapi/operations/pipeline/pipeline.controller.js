@@ -2,13 +2,15 @@ import { runPipelineWithBufferMemory, runPipelineWithPersistence } from '../../.
 import initLogger from '../../../utils/winston-logger.js';
 
 const logger = initLogger();
-const sessionId = '0987654321'; // TODO: Get from requestBody
 
 export async function pipelineControllerFn(req, res) {
   logger.info('Pipeline Controller reached');
 
+  const queryParams = req.params;
+
   const body = req.body;
   const userInput = body.prompt;
+  const sessionId = body.sessionId || '0987654321';
   let response = {};
   
   try {
