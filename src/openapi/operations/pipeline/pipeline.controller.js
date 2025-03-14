@@ -13,8 +13,8 @@ export async function pipelineControllerFn(req, res) {
   const userInput = body.prompt;
   const sessionId = body.sessionId || '0987654321';
 
-  logger.info('userInput: ', userInput);
-  logger.info('sessionId: ', sessionId);
+  logger.info(`userInput: ${userInput}`);
+  logger.info(`sessionId: ${sessionId}`);
 
   let response = {};
   
@@ -23,11 +23,12 @@ export async function pipelineControllerFn(req, res) {
     // response = await runPipelineWithBufferMemory(userInput);
     response = await runPipelineWithPersistence(userInput, sessionId);
 
-    await trimOldestMsgsBySessionId();
+    const trimResponse = await trimOldestMsgsBySessionId();
+    logger.info(`trimResponse: ${trimResponse}`);
 
-    console.log('LLM Response:', response);
+    logger.info(`LLM Response: ${response}`);
   } catch (error) {
-    console.error('Error in LLM pipeline:', error);
+    logger.info(`error: ${error}`);
     res.status(500).end();
   }
   

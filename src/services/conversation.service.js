@@ -36,7 +36,7 @@ export const createPersistentMemory = async(sessionId) => {
 
 export const trimOldestMsgsBySessionId = async(maxExchanges = 50, sessionId) => {
 
-  logger.verbose('>>> conversation.service > trimOldestMsgsBySessionId reached!');
+  logger.info('>>> conversation.service > trimOldestMsgsBySessionId reached!');
 
   const numOfMessageRecords = maxExchanges * 2; // this is still fragile since it assumes an even number divisible by 2
 
@@ -44,9 +44,10 @@ export const trimOldestMsgsBySessionId = async(maxExchanges = 50, sessionId) => 
     const paramQuery = trimOldest;
     const paramValues = [sessionId, numOfMessageRecords];
     const resultSet = await pool.query(paramQuery, paramValues);
-    logger.verbose('>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ', resultSet);
+    logger.info(`>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ${resultSet}`);
+    
     return resultSet;
   } catch (err) {
-    logger.error('>>> conversation.service > trimOldestMsgsBySessionId > ERROR!!!: ', err);
+    logger.info(`>>> conversation.service > trimOldestMsgsBySessionId > ERROR!!!: ${err}`);
   }
 };
