@@ -47,13 +47,13 @@ export const trimOldestMsgsBySessionId = async(maxExchanges = 50, sessionId) => 
     logger.info(`>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ${resultSet ? 'Valid resultSet received' : 'No resultSet received'}`);
 
     // Log object structure before stringifying
-    if (resultSet) {
-      logger.info(`resultSet Type: ${typeof resultSet}`);
-      logger.info(`resultSet Keys: ${Object.keys(resultSet)}`);
-    }
+    // if (resultSet) {
+    //   logger.info(`resultSet Type: ${typeof resultSet}`);
+    //   logger.info(`resultSet Keys: ${Object.keys(resultSet)}`);
+    // }
 
     // Stringify safely
-    logger.info(`resultSet JSON: ${JSON.stringify(resultSet, null, 2)}`);
+    // logger.info(`resultSet JSON: ${JSON.stringify(resultSet, null, 2)}`);
 
     return resultSet;
   } catch (err) {
