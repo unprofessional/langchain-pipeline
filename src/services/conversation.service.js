@@ -34,7 +34,7 @@ export const createPersistentMemory = async(sessionId) => {
   return new BufferMemory({ chatHistory: messageHistory });
 };
 
-export const trimOldestMsgsBySessionId = async (maxExchanges = 50, sessionId) => {
+export const trimOldestMsgsBySessionId = async(maxExchanges = 50, sessionId) => {
   const numOfMessageRecords = maxExchanges * 2;
 
   try {

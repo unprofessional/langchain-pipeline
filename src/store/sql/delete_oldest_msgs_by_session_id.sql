@@ -1,8 +1,9 @@
 DELETE FROM chat_memory
-WHERE id NOT IN (
-    SELECT id 
-    FROM chat_memory 
-    WHERE session_id = $1
-    ORDER BY id DESC
-    LIMIT $2
+WHERE id IN (
+    SELECT id FROM (
+        SELECT id,
+               ROW_NUMBER() OVER (PARTITION BY session_id ORDER BY id DESC) AS row_num
+        FROM chat_memory
+    ) sub
+    WHERE sub.row_num > $2
 );
