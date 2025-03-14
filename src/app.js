@@ -21,7 +21,7 @@ const server = express();
 const file = fs.readFileSync(path.resolve(dirName, './openapi/apidoc.yml'), 'utf8');
 const swaggerDocument = YAML.parse(file);
 
-export default async() => {  
+export default async () => {  
   server.use(cookieParser());
   server.use(express.json());
   // TODO: Consider if we need this for now since we do not have a frontend yet
@@ -31,7 +31,7 @@ export default async() => {
   }));
 
   // Middleware for logging requests
-  server.use(async(req, res, next) => {
+  server.use(async (req, res, next) => {
     const { method, path: apiPath } = req;
     logger.http(`>>> Incoming request: ${method} ${apiPath}`);
 

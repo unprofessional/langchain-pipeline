@@ -38,7 +38,11 @@ export default [
       'comma-dangle': ['error', 'always-multiline'],
       'no-unused-vars': 'warn',
       semi: ['error', 'always'],
-      'space-before-function-paren': ['error', 'never'],
+      'space-before-function-paren': ['error', {
+        anonymous: 'never',
+        named: 'never',
+        asyncArrow: 'always',
+      }],
       'max-len': [
         'warn',
         {

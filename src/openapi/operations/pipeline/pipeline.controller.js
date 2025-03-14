@@ -1,7 +1,5 @@
-import { 
-  // runPipelineWithBufferMemory,
-  runPipelineWithPersistence,
-} from '../../../pipeline/pipeline.js';
+import { runPipelineWithPersistence } from '../../../pipeline/pipeline.js';
+import { trimOldestMsgsBySessionId } from '../../../store/dao/pipeline/conversation.dao.js';
 import initLogger from '../../../utils/winston-logger.js';
 
 const logger = initLogger();
@@ -15,8 +13,8 @@ export async function pipelineControllerFn(req, res) {
   const userInput = body.prompt;
   const sessionId = body.sessionId || '0987654321';
 
-  logger.info('userInput: ', userInput);
-  logger.info('sessionId: ', sessionId);
+  logger.info(`userInput: ${userInput}`);
+  logger.info(`sessionId: ${sessionId}`);
 
   let response = {};
   
@@ -24,11 +22,14 @@ export async function pipelineControllerFn(req, res) {
     // response = await runPipeline(userInput);
     // response = await runPipelineWithBufferMemory(userInput);
     response = await runPipelineWithPersistence(userInput, sessionId);
-    console.log('LLM Response:', response);
+
+    const trimResponse = await trimOldestMsgsBySessionId(50, sessionId);
+    // logger.info(`>>> pipeline.controller > trimOldestMsgsBySessionId > trimResponse: ${JSON.stringify(trimResponse, null, 2)}`);
+    logger.info(`>>> pipeline.controller > trimOldestMsgsBySessionId > response: ${JSON.stringify(response, null, 2)}`);
   } catch (error) {
-    console.error('Error in LLM pipeline:', error);
-    res.status(500).end();
+    logger.error(`>>> pipeline.controller > trimOldestMsgsBySessionId > response: ${JSON.stringify(error, null, 2)}`);
+    return res.status(500).end();
   }
   
-  res.status(200).json(response);
+  return res.status(200).json(response);
 };
