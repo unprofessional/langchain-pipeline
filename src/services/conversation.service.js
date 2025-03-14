@@ -34,10 +34,13 @@ export const createPersistentMemory = async(sessionId) => {
   return new BufferMemory({ chatHistory: messageHistory });
 };
 
-export const trimOldestMsgsBySessionId = async(maxLen, sessionId) => {
+export const trimOldestMsgsBySessionId = async(maxExchanges = 50, sessionId) => {
+
+  const numOfMessageRecords = maxExchanges * 2; // this is still fragile since it assumes an even number divisible by 2
+
   try {
     const paramQuery = trimOldest;
-    const paramValues = [sessionId, maxLen];
+    const paramValues = [sessionId, numOfMessageRecords];
     const resultSet = await pool.query(paramQuery, paramValues);
     logger.verbose('>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ', resultSet);
     return resultSet;
