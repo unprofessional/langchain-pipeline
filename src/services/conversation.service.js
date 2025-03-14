@@ -34,21 +34,29 @@ export const createPersistentMemory = async(sessionId) => {
   return new BufferMemory({ chatHistory: messageHistory });
 };
 
-export const trimOldestMsgsBySessionId = async(maxExchanges = 50, sessionId) => {
-
-  logger.info('>>> conversation.service > trimOldestMsgsBySessionId reached!');
-
-  const numOfMessageRecords = maxExchanges * 2; // this is still fragile since it assumes an even number divisible by 2
+export const trimOldestMsgsBySessionId = async (maxExchanges = 50, sessionId) => {
+  const numOfMessageRecords = maxExchanges * 2;
 
   try {
     const paramQuery = trimOldest;
     const paramValues = [sessionId, numOfMessageRecords];
+      
     const resultSet = await pool.query(paramQuery, paramValues);
-    logger.verbose(`>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ${JSON.stringify(resultSet, null, 2)}`);
+
+    // Check if resultSet is undefined or null
+    logger.info(`>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ${resultSet ? 'Valid resultSet received' : 'No resultSet received'}`);
+
+    // Log object structure before stringifying
+    if (resultSet) {
+      logger.info(`resultSet Type: ${typeof resultSet}`);
+      logger.info(`resultSet Keys: ${Object.keys(resultSet)}`);
+    }
+
+    // Stringify safely
+    logger.info(`resultSet JSON: ${JSON.stringify(resultSet, null, 2)}`);
 
     return resultSet;
   } catch (err) {
-    logger.verbose(`>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ${JSON.stringify(err, null, 2)}`);
-
+    logger.error(`Error in trimOldestMsgsBySessionId: ${err.message}`);
   }
 };
