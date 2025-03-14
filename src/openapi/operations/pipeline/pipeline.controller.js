@@ -23,7 +23,7 @@ export async function pipelineControllerFn(req, res) {
     // response = await runPipelineWithBufferMemory(userInput);
     response = await runPipelineWithPersistence(userInput, sessionId);
 
-    const trimResponse = await trimOldestMsgsBySessionId(50, sessionId);
+    const trimResponse = await trimOldestMsgsBySessionId(5, sessionId);
     // logger.info(`>>> pipeline.controller > trimOldestMsgsBySessionId > trimResponse: ${JSON.stringify(trimResponse, null, 2)}`);
     logger.info(`>>> pipeline.controller > trimOldestMsgsBySessionId > response: ${JSON.stringify(response, null, 2)}`);
   } catch (error) {
