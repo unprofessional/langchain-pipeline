@@ -1,3 +1,4 @@
+import { trimOldestMsgsBySessionId } from 'src/services/conversation.service.js';
 import { runPipelineWithPersistence } from '../../../pipeline/pipeline.js';
 import initLogger from '../../../utils/winston-logger.js';
 
@@ -21,6 +22,9 @@ export async function pipelineControllerFn(req, res) {
     // response = await runPipeline(userInput);
     // response = await runPipelineWithBufferMemory(userInput);
     response = await runPipelineWithPersistence(userInput, sessionId);
+
+    await trimOldestMsgsBySessionId();
+
     console.log('LLM Response:', response);
   } catch (error) {
     console.error('Error in LLM pipeline:', error);
