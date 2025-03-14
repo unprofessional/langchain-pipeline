@@ -1,4 +1,4 @@
-import { trimOldestMsgsBySessionId } from 'src/services/conversation.service.js';
+import { trimOldestMsgsBySessionId } from '../../../services/conversation.service.js';
 import { runPipelineWithPersistence } from '../../../pipeline/pipeline.js';
 import initLogger from '../../../utils/winston-logger.js';
 
