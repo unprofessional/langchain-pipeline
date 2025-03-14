@@ -44,10 +44,11 @@ export const trimOldestMsgsBySessionId = async(maxExchanges = 50, sessionId) => 
     const paramQuery = trimOldest;
     const paramValues = [sessionId, numOfMessageRecords];
     const resultSet = await pool.query(paramQuery, paramValues);
-    logger.info(`>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ${resultSet}`);
-    
+    logger.verbose(`>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ${JSON.stringify(resultSet, null, 2)}`);
+
     return resultSet;
   } catch (err) {
-    logger.info(`>>> conversation.service > trimOldestMsgsBySessionId > ERROR!!!: ${err}`);
+    logger.verbose(`>>> conversation.service > trimOldestMsgsBySessionId > resultSet: ${JSON.stringify(err, null, 2)}`);
+
   }
 };

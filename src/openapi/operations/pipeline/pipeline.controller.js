@@ -24,11 +24,10 @@ export async function pipelineControllerFn(req, res) {
     response = await runPipelineWithPersistence(userInput, sessionId);
 
     const trimResponse = await trimOldestMsgsBySessionId();
-    logger.info(`trimResponse: ${trimResponse}`);
-
-    logger.info(`LLM Response: ${response}`);
+    logger.verbose(`>>> pipeline.controller > trimOldestMsgsBySessionId > trimResponse: ${JSON.stringify(trimResponse, null, 2)}`);
+    logger.verbose(`>>> pipeline.controller > trimOldestMsgsBySessionId > response: ${JSON.stringify(response, null, 2)}`);
   } catch (error) {
-    logger.info(`error: ${error}`);
+    logger.error(`>>> pipeline.controller > trimOldestMsgsBySessionId > response: ${JSON.stringify(error, null, 2)}`);
     res.status(500).end();
   }
   
