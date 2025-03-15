@@ -14,9 +14,9 @@
     "prepare": "husky",
     "start": "node src/server.js",
     "test": "npm run test:unit && npm run test:integration && npm run test:e2e",
-    "test:unit": "jest --testPathPattern=test/unit --detectOpenHandles",
-    "test:integration": "jest --testPathPattern=test/integration --detectOpenHandles",
-    "test:e2e": "jest --testPathPattern=test/e2e --detectOpenHandles"
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest --testPathPattern=test/unit --detectOpenHandles",
+    "test:integration": "NODE_OPTIONS=--experimental-vm-modules jest --testPathPattern=test/integration --detectOpenHandles",
+    "test:e2e": "NODE_OPTIONS=--experimental-vm-modules jest --testPathPattern=test/e2e --detectOpenHandles"
   },
   "repository": {
     "type": "git",

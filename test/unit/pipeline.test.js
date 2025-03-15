@@ -1,21 +1,30 @@
 /* eslint-disable no-undef */
-import { runPipelineWithMemory } from '../../src/pipeline/pipeline.js';
+import { jest } from '@jest/globals';
 
 // Mock the module
-jest.mock('../../src/pipeline/pipeline.js', () => ({
-  runPipelineWithMemory: jest.fn(),
+await jest.unstable_mockModule('../../src/pipeline/pipeline.js', () => ({
+  runPipelineWithBufferMemory: jest.fn().mockResolvedValue({ response: 'Mocked AI response text' }),
 }));
+
+const { runPipelineWithBufferMemory } = await import('../../src/pipeline/pipeline.js');
+
+/**
+ * The above config is necessary to run these mocks.
+ * I don't like it, but this is the state of things.
+ * https://adamtuttle.codes/blog/2024/mocking-esm-dependencies-for-tests/
+ * https://nalanj.dev/posts/mocking-without-loaders/
+ */
 
 describe('Pipeline Unit tests', () => {
   const prompt = 'Test';
   let response;
 
-  beforeAll(async() => {
+  beforeAll(async () => {
     // Define a mock response
     const mockResponse = { response: 'Mocked AI response text' };
-    runPipelineWithMemory.mockResolvedValue(mockResponse); // Mock function behavior
+    runPipelineWithBufferMemory.mockResolvedValue(mockResponse); // Mock function behavior
 
-    response = await runPipelineWithMemory(prompt);
+    response = await runPipelineWithBufferMemory(prompt);
   });
 
   test('Basic pipeline call returns an object', () => {
@@ -34,7 +43,7 @@ describe('Pipeline Unit tests', () => {
   });
 
   test('Pipeline function is called with correct parameters', () => {
-    expect(runPipelineWithMemory).toHaveBeenCalledWith(prompt);
-    expect(runPipelineWithMemory).toHaveBeenCalledTimes(1);
+    expect(runPipelineWithBufferMemory).toHaveBeenCalledWith(prompt);
+    expect(runPipelineWithBufferMemory).toHaveBeenCalledTimes(1);
   });
 });

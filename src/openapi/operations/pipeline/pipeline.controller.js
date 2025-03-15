@@ -1,5 +1,5 @@
-import { trimOldestMsgsBySessionId } from '../../../services/conversation.service.js';
 import { runPipelineWithPersistence } from '../../../pipeline/pipeline.js';
+import { trimOldestMsgsBySessionId } from '../../../store/dao/pipeline/conversation.dao.js';
 import initLogger from '../../../utils/winston-logger.js';
 
 const logger = initLogger();
@@ -28,8 +28,8 @@ export async function pipelineControllerFn(req, res) {
     logger.info(`>>> pipeline.controller > trimOldestMsgsBySessionId > response: ${JSON.stringify(response, null, 2)}`);
   } catch (error) {
     logger.error(`>>> pipeline.controller > trimOldestMsgsBySessionId > response: ${JSON.stringify(error, null, 2)}`);
-    res.status(500).end();
+    return res.status(500).end();
   }
   
-  res.status(200).json(response);
+  return res.status(200).json(response);
 };

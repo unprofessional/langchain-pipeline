@@ -4,7 +4,7 @@ import { trimOldest } from '../../sql/index.js';
 
 const logger = initLogger();
 
-export const trimOldestMsgsBySessionId = async(maxExchanges = 50, sessionId) => {
+export const trimOldestMsgsBySessionId = async (maxExchanges = 50, sessionId) => {
   const numOfMessageRecords = maxExchanges * 2;
 
   try {

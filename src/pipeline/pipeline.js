@@ -17,14 +17,14 @@ export const getLLMInstance = () => {
   return getOllamaLLM();
 };
 
-export const runPipeline = async(input) => {
+export const runPipeline = async (input) => {
   const llm = getLLMInstance();
 
   const response = await llm.invoke(input);
   return response;
 };
 
-export const runPipelineWithBufferMemory = async(input) => {
+export const runPipelineWithBufferMemory = async (input) => {
   const llm = getLLMInstance();
 
   const chain = new ConversationChain({ llm, memory });
@@ -33,7 +33,7 @@ export const runPipelineWithBufferMemory = async(input) => {
   return response;
 };
 
-export const runPipelineWithPersistence = async(input, sessionId) => {
+export const runPipelineWithPersistence = async (input, sessionId) => {
   const llm = getLLMInstance();
 
   // TODO: Max 50 history, so trim off any exceeding 50.
