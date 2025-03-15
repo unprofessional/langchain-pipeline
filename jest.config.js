@@ -4,7 +4,7 @@ const config = {
   transform: {
     '^.+\\.js$': 'babel-jest',
   },
-  testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
+  testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test|integration|e2e).js'],
   coverageThreshold: {
     global: {
       branches: 52,

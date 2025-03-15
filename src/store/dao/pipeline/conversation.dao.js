@@ -1,21 +1,8 @@
-/* eslint-disable no-underscore-dangle */
-import { PostgresChatMessageHistory } from '@langchain/community/stores/message/postgres';
-import { BufferMemory } from 'langchain/memory';
-import initLogger from '../utils/winston-logger.js';
-import { pool } from '../store/db.js';
-import { trimOldest } from '../store/sql/index.js';
+import { pool } from '../../../store/db.js';
+import initLogger from '../../../utils/winston-logger.js';
+import { trimOldest } from '../../sql/index.js';
 
 const logger = initLogger();
-
-export const createPersistentMemory = async(sessionId) => {
-  const messageHistory = new PostgresChatMessageHistory({
-    pool,
-    tableName: 'chat_memory',
-    sessionId,
-  });
-
-  return new BufferMemory({ chatHistory: messageHistory });
-};
 
 export const trimOldestMsgsBySessionId = async(maxExchanges = 50, sessionId) => {
   const numOfMessageRecords = maxExchanges * 2;
