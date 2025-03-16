@@ -1,6 +1,5 @@
-import initLogger from './utils/winston-logger.js';
-
-import openApiExpressServer from './app.js';
+import initLogger from './utils/winston-logger.js'; // MUST be initialized first when placed here
+import app from './app.js';
 import env from './config/env.config.js';
 
 // Get logger instance from initLogger()
@@ -8,7 +7,7 @@ const logger = initLogger();
 
 const port = env.PORT;
 
-openApiExpressServer()
+app()
   .then((server) => {
     server.listen(port, () => {
       logger.info(`Server is running at port ${port}`);

@@ -5,7 +5,7 @@ describe('Pipeline Unit integration test', () => {
    * TODO: Use Supertest!!!!!
    */
 
-  beforeAll(async() => {
+  beforeAll(async () => {
     // setup
   });
 

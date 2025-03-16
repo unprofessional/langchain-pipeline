@@ -17,7 +17,7 @@ import { BufferMemory } from 'langchain/memory';
 // NOTE: This is strictly in-memory and memories/convos do not survive app restarts!
 const memory = new BufferMemory();
 
-export const runPromptWithMemory = async(input, sessionId) => {
+export const runPromptWithMemory = async (input, sessionId) => {
   const llm = getLLMInstance();
 
   // const memory = await createPersistentMemory(sessionId);
