@@ -35,7 +35,7 @@ describe('Pipeline Unit e2e test', () => {
       .expect(200);
 
     expect(response.body).toBeDefined();
-    expect(runPipelineWithPersistence).toHaveBeenCalledWith('Hello world', '1234567890'); // ✅ Verify mock
+    expect(runPipelineWithPersistence).toHaveBeenCalledWith('Hello world', '1234567890');
   });
 
   test('Unsuccessful POST /pipeline response: Bad RequestBody', async () => {
