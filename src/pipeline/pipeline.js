@@ -17,6 +17,7 @@ export const getLLMInstance = () => {
   return getOllamaLLM();
 };
 
+// Just single-use request/response
 export const runPipeline = async (input) => {
   const llm = getLLMInstance();
 
@@ -24,6 +25,7 @@ export const runPipeline = async (input) => {
   return response;
 };
 
+// In-memory conversation history
 export const runPipelineWithBufferMemory = async (input) => {
   const llm = getLLMInstance();
 
@@ -33,6 +35,7 @@ export const runPipelineWithBufferMemory = async (input) => {
   return response;
 };
 
+// Database persisted conversation history
 export const runPipelineWithPersistence = async (input, sessionId) => {
   const llm = getLLMInstance();
 
