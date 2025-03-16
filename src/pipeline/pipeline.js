@@ -36,7 +36,6 @@ export const runPipelineWithBufferMemory = async (input) => {
 export const runPipelineWithPersistence = async (input, sessionId) => {
   const llm = getLLMInstance();
 
-  // TODO: Max 50 history, so trim off any exceeding 50.
   const memory = await createPersistentMemory(sessionId);
 
   // If you want to retrieve
