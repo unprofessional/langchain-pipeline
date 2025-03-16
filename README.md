@@ -23,6 +23,15 @@ A general pipeline for GenAI, intended as a modular boilerplate for various runn
 - Does NOT use an ORM (for now)
   - just defines static `*.sql` files and destructure-export them as needed
 
+## Get Started (local)
+### Prerequisites
+- `nvm use` (if using `nvm`)
+  - else `node --version` must be `v20.11.1` or higher
+
+### Install deps and run the app
+1) `npm i`
+2) `npm start`
+
 ## TODO:
 - Add RAG
 - Add summarizer (2-stage model pipeline)
