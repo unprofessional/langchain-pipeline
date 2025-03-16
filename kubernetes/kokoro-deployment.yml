@@ -49,10 +49,10 @@ spec:
             secretKeyRef:
               name: model-provider
               key: MODEL_PROVIDER
-        - name: OLLAMA_URL
+        - name: OLLAMA_BASE_URL
           valueFrom:
             secretKeyRef:
-              name: ollama-url
-              key: OLLAMA_URL
+              name: ollama-base-url
+              key: OLLAMA_BASE_URL
         # TODO: OPENAI_URL (if needed)
         # TODO: OPENAI_API_KEY (if needed)
