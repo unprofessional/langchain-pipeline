@@ -13,8 +13,9 @@ A general pipeline for GenAI, intended as a modular boilerplate for various runn
 - ESLint
 - Jest
 - Husky pre-commit hooks
-- Basic jest test
-- PGlite for in-memory Postgres
+- Basic jest tests
+  - unit, integration, and e2e
+- `PGlite` for in-memory Postgres (for integration/e2e tests)
 
 ### Functionality
 - Base case for LangChain Pipeline
@@ -33,6 +34,7 @@ A general pipeline for GenAI, intended as a modular boilerplate for various runn
 2) `npm start`
 
 ## TODO:
+- Link back to deps/libs declared here in this README
 - Add RAG
 - Add summarizer (2-stage model pipeline)
 - Strucuted output example (Ollama `format`)
