@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import { jest } from '@jest/globals';
 
-// Mock the module
-await jest.unstable_mockModule('../../src/pipeline/pipeline.js', () => ({
+// Mock module
+jest.unstable_mockModule('../../src/pipeline/pipeline.js', () => ({
   runPipelineWithBufferMemory: jest.fn().mockResolvedValue({ response: 'Mocked AI response text' }),
 }));
 

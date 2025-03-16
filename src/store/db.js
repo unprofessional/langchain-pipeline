@@ -2,14 +2,18 @@ import pg from 'pg';
 import { PGlite } from '@electric-sql/pglite';
 import env from '../config/env.config.js';
 import { createTableChatMemory } from './sql/index.js';
+import initLogger from '../utils/winston-logger.js';
 
 const { Pool } = pg;
+const logger = initLogger();
 
 let pool;
 
+logger.info(`>>> NODE_ENV: ${process.env.NODE_ENV}`);
+
 // Use PGlite if running tests
-if (process.env.NODE_ENV === 'development') {
-  console.warn('>>> NODE_ENV is set to "development"!');
+if (process.env.NODE_ENV === 'test') {
+  logger.info('>>> NODE_ENV is set to "test"!');
 
   pool = new PGlite();
   pool.query(createTableChatMemory);
