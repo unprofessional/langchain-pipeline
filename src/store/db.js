@@ -9,7 +9,7 @@ const logger = initLogger();
 
 let pool;
 
-logger.info(`>>> NODE_ENV: ${process.env.NODE_ENV}`);
+logger.debug(`>>> NODE_ENV: ${process.env.NODE_ENV}`);
 
 // Use PGlite if running tests
 if (process.env.NODE_ENV === 'test') {
