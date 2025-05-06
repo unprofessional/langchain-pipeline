@@ -18,9 +18,9 @@ export async function pipelineControllerFn(req, res) {
   let response = {};
   
   try {
-    // response = await runPipeline(userInput);
-    // response = await runPipelineWithBufferMemory(userInput);
-    response = await runPipelineWithPersistence(userInput, sessionId);
+    // response = await runPipeline(userInput); // one-off
+    // response = await runPipelineWithBufferMemory(userInput); // in-memory convo history
+    response = await runPipelineWithPersistence(userInput, sessionId); // postgres backed convo history
 
     logger.info(`>>> pipeline.controller > trimOldestMsgsBySessionId > response: ${JSON.stringify(response, null, 2)}`);
   } catch (error) {

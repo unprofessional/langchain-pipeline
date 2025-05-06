@@ -17,8 +17,8 @@ spec:
         image: unprofessional/kokoro:rc-0.0.1
         imagePullPolicy: Never
         ports:
-        - containerPort: 3030  # Ensure this matches the container's port (Dockerfile)
-        env:  # Environment variables go here (not under ports)
+        - containerPort: 3030  # container port (Dockerfile)
+        env:
         - name: PG_HOST
           valueFrom:
             secretKeyRef:

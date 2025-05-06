@@ -27,6 +27,6 @@ export default {
   OLLAMA_PORT: process.env.OLLAMA_PORT || '11434',
   OLLAMA_CHAT_ENDPOINT: process.env.OLLAMA_CHAT_ENDPOINT || 'api/chat',
   OLLAMA_EMBEDDING_ENDPOINT: process.env.OLLAMA_EMBEDDING_ENDPOINT || 'api/embed',
-  OLLAMA_MODEL: process.env.OLLAMA_MODEL || 'llama3.2-vision:11b',
+  OLLAMA_MODEL: process.env.OLLAMA_MODEL || 'vanilj/midnight-miqu-70b-v1.5:latest',
   OLLAMA_EMBED_MODEL: process.env.OLLAMA_EMBED_MODEL || 'avr/sfr-embedding-mistral:q4_k_m',
 };
